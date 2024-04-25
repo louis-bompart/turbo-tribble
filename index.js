@@ -7,12 +7,15 @@ writeFileSync('copypasta', text, { encoding: "utf-8", flag: "w" });
 
 spawnSync("git", ["add", "-A"], {
   shell: process.platform === "win32" ? "powershell" : undefined,
+  stdio: "inherit",
 });
 
 spawnSync("git", ["commit", "-m", "Add copypasta"], {
   shell: process.platform === "win32" ? "powershell" : undefined,
+  stdio: "inherit",
 });
 
 spawnSync("git", ["push"], {
   shell: process.platform === "win32" ? "powershell" : undefined,
+  stdio: "inherit",
 });
