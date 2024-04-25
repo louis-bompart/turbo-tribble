@@ -23,7 +23,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - run: where.exe git
-      - run: where.exe git.ps1
-      - run: where.exe git
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.12.2
+      - name: Install dependencies
+        run: npm install
+      - name: Run index.js
+        run: node index.js
